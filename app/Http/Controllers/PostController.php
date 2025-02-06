@@ -6,6 +6,13 @@ use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use Inertia\Inertia;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Route;
+
+
+
 
 class PostController extends Controller
 {
@@ -32,8 +39,18 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        Post::create($request->all());
-        return redirect()->route('posts.index');
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'body' => 'required|string',
+        ]);
+
+        if($validated) {
+            Post::create($validated);
+
+            return redirect('/');
+        }
+
+        return redirect()->back()->with('error', 'Failed to create post');
     }
 
     /**
