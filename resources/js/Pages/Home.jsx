@@ -26,19 +26,25 @@ export default function Home({ posts }) {
 
         {posts.data.map((post) => (
 
-            <div key={post.id} className="border-2 border-blue-500 text-center">
+            <Link key={post.id} href={`/posts/${post.id}`}>
+                <div className='border-2 border-blue-500 p-5 mb-5 rounded-md hover:bg-blue-500 hover:text-white transition-all duration-300 cursor-pointer hover:shadow-lg hover:shadow-blue-500 hover:scale-105'>
+                    <div className="flex justify-between items-center">
+                        <div className="flex flex-col">
+                            <h2 className="text-2xl font-bold">{post.title}</h2>
 
-                <h2 className="text-2xl font-bold">{post.title}</h2>
-                <p className="text-sm">{post.body}</p>
+                            <p className="text-sm">{post.body}</p>
+                        </div>
+                        
+                        {/* <div>
+                            <Link href={`/posts/${post.id}`} className="bg-blue-500 text-white px-4 py-2 rounded-md">View</Link>
+                        </div> */}
+                    </div>
 
-                <div className="flex align-center justify-center mt-5">
-                    <Link href={`/posts/${post.id}`} className="bg-blue-500 text-white px-4 py-2 rounded-md">View</Link>
+                    <div className="flex justify-end mt-5 text-gray-500">
+                        <p className="text-sm">{timeAgo(post.created_at)}</p>
+                    </div>
                 </div>
-
-                <div className="flex justify-end text-gray-500 mt-5">
-                    <p className="text-sm">{timeAgo(post.created_at)}</p>
-                </div>
-            </div>
+            </Link>
 
         ))}
 
