@@ -21,9 +21,9 @@ export default function Home({ posts }) {
     }
 
     return <>
-        {posts.map((post) => (
+        {posts.data.map((post) => (
 
-            <div key={post.id} className="border-2 border-blue-500 text-center p-5">
+            <div key={post.id} className="border-2 border-blue-500 text-center">
 
                 <h2 className="text-2xl font-bold">{post.title}</h2>
                 <p className="text-sm">{post.body}</p>
@@ -38,5 +38,20 @@ export default function Home({ posts }) {
             </div>
 
         ))}
+
+        <div className="flex justify-center gap-2 mt-5 mb-10">
+            {posts.links.map((link) => (
+                <Link 
+                    href={link.url} 
+                    key={link.url} 
+                    className={`px-4 py-2 rounded-md ${link.active ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-500'}`}
+                    dangerouslySetInnerHTML={{ __html: link.label }}
+                >
+                </Link> 
+
+            ))}
+        </div>
     </>
+
+
 }

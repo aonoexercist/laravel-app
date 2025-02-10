@@ -22,7 +22,7 @@ class PostController extends Controller
     public function index()
     {
         return Inertia::render('Home', [
-            'posts' => Post::all()
+            'posts' => Post::orderBy('created_at', 'desc')->paginate(5)
         ]);
     }
 
