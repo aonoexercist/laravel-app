@@ -9,7 +9,7 @@ export default function CreatePost() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    post('/posts')
+    post(route('posts.store'))
   }
 
 

@@ -48,7 +48,5 @@ export default function ShowPost({ post }) {
         <button onClick={handleDelete} className="bg-red-500 text-white px-4 py-2 rounded-md cursor-pointer" disabled={processing}>Delete</button>
       </div>
     </div>
-
-
 )
 }
