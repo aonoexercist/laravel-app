@@ -1,5 +1,5 @@
 import { useForm } from '@inertiajs/react'
-import { router } from '@inertiajs/react'
+import { Head } from '@inertiajs/react'
 
 export default function CreatePost() {
   const { data, setData, post, processing, errors } = useForm({
@@ -14,8 +14,9 @@ export default function CreatePost() {
 
 
   return <>
-    <h1 className="text-2xl font-bold text-center py-4">Create new Post</h1>
+    <Head title="Create Post" />
 
+    <h1 className="text-2xl font-bold text-center py-4">Create new Post</h1>
 
     <div className="max-w-md mx-auto mt-10">
       <form onSubmit={handleSubmit}>

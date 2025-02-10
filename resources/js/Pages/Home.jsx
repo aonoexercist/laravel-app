@@ -1,6 +1,7 @@
-import { Link } from '@inertiajs/react'
+import { Head, Link, usePage } from '@inertiajs/react'
 
 export default function Home({ posts }) {
+    const { component } = usePage();
 
     const timeAgo = (date) => {
         const now = new Date();
@@ -21,6 +22,8 @@ export default function Home({ posts }) {
     }
 
     return <>
+        <Head title={component} />
+
         {posts.data.map((post) => (
 
             <div key={post.id} className="border-2 border-blue-500 text-center">

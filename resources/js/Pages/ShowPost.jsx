@@ -1,6 +1,7 @@
 import { Link } from '@inertiajs/react'
 import { useForm } from '@inertiajs/react'
 import { useRoute } from '../../../vendor/tightenco/ziggy';
+import { Head } from '@inertiajs/react'
 
 export default function ShowPost({ post }) {
 
@@ -34,7 +35,9 @@ export default function ShowPost({ post }) {
     return years === 1 ? '1 year ago' : `${years} years ago`;
   }
 
-  return (
+  return <>
+    <Head title="Show Post" />
+
     <div className="p-5">
       <h1 className="text-2xl font-bold">{post.title}</h1>
       <p className="mt-2">{post.body}</p>
@@ -48,5 +51,5 @@ export default function ShowPost({ post }) {
         <button onClick={handleDelete} className="bg-red-500 text-white px-4 py-2 rounded-md cursor-pointer" disabled={processing}>Delete</button>
       </div>
     </div>
-)
+  </>
 }
