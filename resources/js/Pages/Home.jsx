@@ -61,6 +61,4 @@ export default function Home({ posts }) {
             ))}
         </div>
     </>
-
-
 }
